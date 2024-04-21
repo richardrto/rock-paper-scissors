@@ -13,7 +13,7 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerSelection() {
+function getPlayerChoice() {
     return prompt('Enter your choice:');
 }
 
@@ -26,4 +26,15 @@ function playRound(playerSelection, computerSelection) {
         : playerSelection == 'scissors' && computerSelection == 'rock' ? 'Computer wins!'
         : playerSelection == 'scissors' && computerSelection == 'paper' ? 'Player wins!'
         : 'Hm, this is a strange outcome. Try again.';
+}
+
+function playGame() {
+    let playerWins = 0;
+    let computerWins = 0;
+    for (let i = 0; i < 5; i++) {
+        let winner = playRound(getPlayerChoice(), getComputerChoice());
+        winner == 'Player wins!' ? playerWins++ : computerWins++;
+        console.log(winner);
+    }
+    return playerWins > computerWins ? 'Player has won the game!' : 'Computer has won the game!';
 }
